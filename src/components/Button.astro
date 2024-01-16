@@ -1,0 +1,21 @@
+---
+type ButtonOrAnchor = astroHTML.JSX.ButtonHTMLAttributes &
+  astroHTML.JSX.AnchorHTMLAttributes;
+
+export type Props = ButtonOrAnchor & {
+  asLink?: boolean;
+};
+
+const props = Astro.props as Props;
+const El = props.asLink ? "a" : "button";
+---
+
+<div class:list={[props.class]}>
+  <El
+    {...props as any}
+    class:list={[
+      "bg-purple-900 px-4 py-2 text-white text-base font-medium rounded shadow-sm hover:bg-purple-950 transition-all",
+    ]}>
+    <slot />
+  </El>
+</div>
