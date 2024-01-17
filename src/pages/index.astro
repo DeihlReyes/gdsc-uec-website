@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+
+import Hero from "../components/Landing/Hero.astro";
+
+import Footer from "../components/Footer.astro";
+import Footer2 from "../components/Footer2.astro";
+import { SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={"GDSC UEC - Home"} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <Hero />
+      <Footer />
+      <Footer2 />
+    </main>
+  </body>
+</html>
