@@ -1,0 +1,23 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import AllEvents from "../../components/Events/AllEvents.astro";
+import FeaturedEvent from "../../components/Events/FeaturedEvent.astro";
+import { SITE_DESCRIPTION } from "../../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={"Events"} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <FeaturedEvent />
+      <AllEvents />
+    </main>
+    <Footer />
+  </body>
+</html>
