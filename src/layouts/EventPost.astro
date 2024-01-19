@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+type Props = CollectionEntry<"events">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body class="font-sans bg-white">
+    <Header />
+    <main class="max-w-full mx-auto">
+      <article>
+        <div class="w-full">
+          {
+            heroImage && (
+              <Image
+                class="brightness-50 w-full h-screen object-cover"
+                src={heroImage}
+                alt=""
+              />
+            )
+          }
+        </div>
+        <div class="max-w-screen-md mx-auto mt-12 p-4 prose text-gray-dark">
+          <div class="mb-4 py-4 text-start">
+            <h2
+              class="text-start font-bold text-2xl md:text-4xl leading-none mb-4">
+              {title}
+            </h2>
+            <div class="mt-1 text-md md:text-lg text-start text-gray-500 mb-4">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="italic">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <hr />
+          </div>
+          <slot class="leading-relaxed font-bold" />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
